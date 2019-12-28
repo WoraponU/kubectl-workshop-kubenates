@@ -1,0 +1,11 @@
+kind: {KIND} # Service, Pod, Deployment, ReplicationController, Job etc.
+apiVersion: {VERSION} # v1, apps/v1beta1, extensions/v1beta1 etc.
+metadata:
+  name: {NAME}
+  namespace: {NAMESPACE}
+  labels:
+    {KEY}: {VALUE}
+  annotation:
+    {KEY}: {VALUE}
+spec:
+ {Define spec}

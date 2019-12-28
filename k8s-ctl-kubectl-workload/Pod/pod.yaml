@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-react-pod
+  namespace: learnbydo
+  labels:
+    app: frontend
+  annotations:
+    version-image: "1.0.0"
+spec:
+  containers:
+  - name: frontend-react-container
+    image: noppachai/server:1.1
+    ports:
+      - containerPort: 8080

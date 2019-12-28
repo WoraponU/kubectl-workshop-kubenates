@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-frontend-react-deployment
+  namespace: learnbydo
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-repica
+  template:
+    metadata:
+      labels:
+        app: frontend-repica
+      annotations:
+        version-image: "1.0.1"
+    spec:
+      containers:
+      - name: frontend-react-container
+        image: noppachai/server:1.1
+        ports:
+        - containerPort: 8080
+# ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-react-service2
+  namespace: learnbydo
+  labels:
+    app: frontend
+spec:
+  type: NodePort
+  ports:
+  - port: 2000
+    targetPort: 8080
+    nodePort: 32003
+  selector:
+    app: frontend-repica

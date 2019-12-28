@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: frontend-react-stateful
+  namespace: noppachai
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  serviceName: "frontend-react-service"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+      annotations:
+        version-image: "1.0.0"
+    spec:
+      containers:
+      - name: frontend-react
+        image: registry.thinknet.co.th/demo/frontend-react:demo
+        ports:
+        - containerPort: 3000

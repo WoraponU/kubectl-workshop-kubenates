@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: frontend
+  namespace: noppachai
+  labels:
+    k8s-app: frontend
+spec:
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - name: frontend-react-container
+        image: registry.thinknet.co.th/demo/frontend-react:demo

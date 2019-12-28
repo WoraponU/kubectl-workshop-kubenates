@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: frontend-react-cronjob
+  namespace: learnbydo
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: frontend-react-container
+            image: noppachai/server:1.1
+            command: ['/bin/sh', '-c']
+            args: ["echo 'Hello Frontend REACT. Create by CronJob.'"]
+          restartPolicy: OnFailure

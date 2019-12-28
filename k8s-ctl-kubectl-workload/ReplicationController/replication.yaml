@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: frontend-react-replication
+  namespace: noppachai
+spec:
+  replicas: 1
+  selector:
+    app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+      annotations:
+        version-image: "1.0.0"
+    spec:
+      containers:
+      - name: frontend-react-container
+        image: registry.thinknet.co.th/demo/frontend-react:demo
+        ports:
+        - containerPort: 3000
